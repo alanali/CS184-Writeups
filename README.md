@@ -1,6 +1,6 @@
 # CS184 Project Webpage Repo
 
-Home Page: https://alanali.github.io/CS184-Writeups/indexhome.html
+Home Page: https://alanali.github.io/CS184-Writeups/
 
 Project 1: https://alanali.github.io/CS184-Writeups/proj1/index.html
 
