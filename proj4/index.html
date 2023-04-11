@@ -11,11 +11,11 @@
 		<div style="text-align:center">
 			<a href="https://alanali.github.io/CS184-Writeups/proj4/index.html">Project 4 Report Link</a>
 		</div>
-		
+
 		<h2>Part 1: Masses and Springs</h2>
 		<div class="row">
 		  <div class="column">
-		    <img src="Images/2pins.png" alt="2 Pins" style="width:100%; padding: 0%">
+		    <img src="Images/2pins.png" alt="2 Pins" style="width:60%; padding: 0%">
 				<p>Wireframe with 2 Pins (Gravity Included)</p>
 		  </div>
 		</div>
@@ -57,21 +57,35 @@
 		<p align="center">Modifications to Spring Constant (N/m)</p>
 		<div class="row">
 		  <div class="column">
-		    <img src="Images/lessgrav.gif" alt="Less Gravity" style="width:100%; padding: 0%">
-				<p>Less Gravity (-5)</p>
+		    <img src="Images/lessks.gif" alt="Less ks" style="width:100%; padding: 0%">
+				<p>Less ks (2500)</p>
 		  </div>
 			<div class="column">
-		    <img src="Images/normalgrav.gif" alt="Default Gravity" style="width:100%; padding: 0%">
-				<p>Normal Gravity (-9.8)</p>
+		    <img src="Images/normalgrav.gif" alt="Default ks" style="width:100%; padding: 0%">
+				<p>Normal ks (5000)</p>
 		  </div>
 		  <div class="column">
-		    <img src="Images/moregrav.gif" alt="More Gravity" style="width:100%; padding: 0%">
-				<p>More Gravity (-15)</p>
+		    <img src="Images/moreks.gif" alt="More ks" style="width:100%; padding: 0%">
+				<p>More ks (7500)</p>
+		  </div>
+		</div>
+		<p align="center">Modifications to Density (g/cm&sup2)</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/lessdensity.gif" alt="Less Density" style="width:100%; padding: 0%">
+				<p>Less Density (5)</p>
+		  </div>
+			<div class="column">
+		    <img src="Images/normalgrav.gif" alt="Default Density" style="width:100%; padding: 0%">
+				<p>Normal Density (15)</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/moredensity.gif" alt="More Density" style="width:100%; padding: 0%">
+				<p>More Density (25)</p>
 		  </div>
 		</div>
 		<p>Supersampling is an antialiasing technique that involves taking multiple measurements within one pixel and setting the value of the pixel to the average of the subpixel samples. This blurs the sharp lines and edges you would see in rasterization otherwise. In other words, it decreases the appearance of jaggies.</p>
 		<p>I implemented this by changing the previous rasterization method to sample multiple times with the provided sample rate. For each pixel, the center of each of the subsections of the pixel are tested to determine if the section is within the triangle. If it is found that the point is within the triangle then sample_buffer is colored. Afterwards the average of the colors are calculated, which creates the burred line effect you see in the images above. To do that the resolve_to_framebuffer function was modified to calculate the averages of the colors.</p>
-		Project 4 here
 	<br></br>
 	</body>
 </html>
