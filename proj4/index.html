@@ -3,9 +3,74 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1>Project 4: TODO</h1>
-		<h3>By Alana Li, Jianzhong He</h3>
+		<h1>Project 4: Cloth Simulation</h1>
+		<h3>By Alana Li</h3>
+		<h2>Overview</h2>
+		<p>This project simulated real-time cloth, modeled with masses and springs. Three types of springs were included, structural, shearing, and bending. Simulation of how the cloth would fall due to gravity was implemented, and computation of cloth self-collision and collisions with other objects were also added. Lastly, shaders for the cloth were implemented.
+		</p>
+		<div style="text-align:center">
+			<a href="https://alanali.github.io/CS184-Writeups/proj4/index.html">Project 4 Report Link</a>
+		</div>
+		
+		<h2>Part 1: Masses and Springs</h2>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/2pins.png" alt="2 Pins" style="width:100%; padding: 0%">
+				<p>Wireframe with 2 Pins (Gravity Included)</p>
+		  </div>
+		</div>
+		<p>A square piece of cloth was modeled with masses and structural, shearing, and bending springs.</p>
+		<p>Structural Springs: Between a point mass and the point mass to its left as well as the point mass above</p>
+		<p>Shearing Springs: Between a point mass and the point mass to its diagonal upper left as well as the point mass to its diagonal upper right</p>
+		<p>Bending Springs: Between a point mass and the point mass 2 to the left as well as the point mass two above</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/allconstraints.png" alt="All Constraints" style="width:100%; padding: 0%">
+				<p>All Springs</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/noshearing.png" alt="No Shearing" style="width:100%; padding: 0%">
+				<p>No Shearing</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/onlyshearing.png" alt="Only Shearing" style="width:100%; padding: 0%">
+				<p>Only Shearing</p>
+		  </div>
+		</div>
 
+		<h2>Part 2: Simulation via Numerical Integration</h2>
+		<p align="center">Modifications to Gravity (m/s&sup2)</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/lessgrav.gif" alt="Less Gravity" style="width:100%; padding: 0%">
+				<p>Less Gravity (-5)</p>
+		  </div>
+			<div class="column">
+		    <img src="Images/normalgrav.gif" alt="Default Gravity" style="width:100%; padding: 0%">
+				<p>Normal Gravity (-9.8)</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/moregrav.gif" alt="More Gravity" style="width:100%; padding: 0%">
+				<p>More Gravity (-15)</p>
+		  </div>
+		</div>
+		<p align="center">Modifications to Spring Constant (N/m)</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/lessgrav.gif" alt="Less Gravity" style="width:100%; padding: 0%">
+				<p>Less Gravity (-5)</p>
+		  </div>
+			<div class="column">
+		    <img src="Images/normalgrav.gif" alt="Default Gravity" style="width:100%; padding: 0%">
+				<p>Normal Gravity (-9.8)</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/moregrav.gif" alt="More Gravity" style="width:100%; padding: 0%">
+				<p>More Gravity (-15)</p>
+		  </div>
+		</div>
+		<p>Supersampling is an antialiasing technique that involves taking multiple measurements within one pixel and setting the value of the pixel to the average of the subpixel samples. This blurs the sharp lines and edges you would see in rasterization otherwise. In other words, it decreases the appearance of jaggies.</p>
+		<p>I implemented this by changing the previous rasterization method to sample multiple times with the provided sample rate. For each pixel, the center of each of the subsections of the pixel are tested to determine if the section is within the triangle. If it is found that the point is within the triangle then sample_buffer is colored. Afterwards the average of the colors are calculated, which creates the burred line effect you see in the images above. To do that the resolve_to_framebuffer function was modified to calculate the averages of the colors.</p>
 		Project 4 here
 	<br></br>
 	</body>
