@@ -8,9 +8,6 @@
 		<h2>Overview</h2>
 		<p>This project simulated real-time cloth, modeled with masses and springs. Three types of springs were included, structural, shearing, and bending. Simulation of how the cloth would fall due to gravity was implemented, and computation of cloth self-collision and collisions with other objects were also added. Lastly, shaders for the cloth were implemented.
 		</p>
-		<div style="text-align:center">
-			<a href="https://alanali.github.io/CS184-Writeups/proj4/index.html">Project 4 Report Link</a>
-		</div>
 
 		<h2>Part 1: Masses and Springs</h2>
 		<div class="row">
@@ -54,6 +51,9 @@
 				<p>More Gravity (-15)</p>
 		  </div>
 		</div>
+		<p>With less gravity, the cloth falls slower, with more gravity the cloth falls faster. It also takes longer for the cloth to settle at an equilibrium state with lower gravity than with higher gravity.</p>
+		<br>
+
 		<p align="center">Modifications to Spring Constant (N/m)</p>
 		<div class="row">
 		  <div class="column">
@@ -69,6 +69,9 @@
 				<p>More ks (7500)</p>
 		  </div>
 		</div>
+		<p>With a lower ks value, the cloth is more elastic. There is a much more visible bounce during and after the fall as compared the the higher ks value. The cloth simulated with a high ks value stretches a lot less in comparision.</p>
+		<br>
+
 		<p align="center">Modifications to Density (g/cm&sup2)</p>
 		<div class="row">
 		  <div class="column">
@@ -84,8 +87,60 @@
 				<p>More Density (25)</p>
 		  </div>
 		</div>
-		<p>Supersampling is an antialiasing technique that involves taking multiple measurements within one pixel and setting the value of the pixel to the average of the subpixel samples. This blurs the sharp lines and edges you would see in rasterization otherwise. In other words, it decreases the appearance of jaggies.</p>
-		<p>I implemented this by changing the previous rasterization method to sample multiple times with the provided sample rate. For each pixel, the center of each of the subsections of the pixel are tested to determine if the section is within the triangle. If it is found that the point is within the triangle then sample_buffer is colored. Afterwards the average of the colors are calculated, which creates the burred line effect you see in the images above. To do that the resolve_to_framebuffer function was modified to calculate the averages of the colors.</p>
+		<p>Density is involved in the calculation of the mass of the points in the cloth. With a lower density cloth there isn't much movement when the cloth falls, the curve at the top is much less dramatic than with higher density. With higher density the cloth falls with thicker folds.</p>
+		<br>
+
+		<p align="center">Modifications to Damping</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/lessdamp.gif" alt="Less Damping" style="width:100%; padding: 0%">
+				<p>Less Damping (0.1%)</p>
+		  </div>
+			<div class="column">
+		    <img src="Images/normalgrav.gif" alt="Default Damping" style="width:100%; padding: 0%">
+				<p>Normal Damping (0.2%)</p>
+		  </div>
+		  <div class="column">
+		    <img src="Images/moredamp.gif" alt="More Damping" style="width:100%; padding: 0%">
+				<p>More Damping (1%)</p>
+		  </div>
+		</div>
+		<p>Damping is the variable that controls how much energy is lost. With a lower dampening value, less energy is lost so the cloth stays in motion more after it falls, swinging back and forth. With a higher dampening value the cloth comes to a stop quickly.</p>
+		<br>
+
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/pinned4.png" alt="4 Pin Cloth" style="width:100%; padding: 0%">
+				<p>4 Pin Cloth (Normal Paramenters)</p>
+		  </div>
+			<div class="column">
+		    <img src="Images/pinned4color.png" alt="Shaded 4 Pin Cloth" style="width:100%; padding: 0%">
+				<p>Shaded 4 Pin Cloth (Normal Paramenters)</p>
+		  </div>
+		</div>
+
+	<h2>Part 3: Handling Object Collisions</h2>
+	<div class="row">
+		<div class="column">
+			<img src="Images/sphere3.png" alt="Sphere Collision (50000ks)" style="width:100%; padding: 0%">
+			<p>Sphere Collision (50000ks)</p>
+		</div>
+		<div class="column">
+			<img src="Images/sphere1.png" alt="Sphere Collision (5000ks)" style="width:100%; padding: 0%">
+			<p>Sphere Collision (5000ks)</p>
+		</div>
+		<div class="column">
+			<img src="Images/sphere2.png" alt="Sphere Collision (500ks)" style="width:100%; padding: 0%">
+			<p>Sphere Collision (500ks)</p>
+		</div>
+	</div>
+	<p>As shown above, with a higher ks value the cloth is less tight around the sphere while lower ks values have the cloth more draped and close-fitted to the sphere. This makes sense because ks effects the stiffness of the cloth. The more stiff the cloth is, the less it is prone to move and drape around the sphere.</p>
+	<div class="row">
+		<div class="column">
+			<img src="Images/plane.png" alt="Cloth on Plane" style="width:60%; padding: 0%">
+			<p>Cloth on Plane</p>
+		</div>
+	</div>
 	<br></br>
 	</body>
 </html>
