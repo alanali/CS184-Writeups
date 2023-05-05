@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>Iridescent Effects Simulation Final Report</h1>
+		<h3>Team Members:</h3>
+		<h5>Alana Li 3036912864</h5>
+		<h5>Jianzhong He 3036960615</h5>
+		<h5>Jie Chen 3036845283</h5>
+		<h5>Beatriz Muniz de Castro e Silva 3038745686</h5>
+
+		<h2>Abstract</h2>
+		<p>
+			In this project, we implemented the effects of iridescence due to the wave nature of light. When light rays get reflected from the surface, they tend to interfere with each other because of different wavelengths, exhibiting many colorful patterns on the surface. We are going to approximate this real-life situation by keeping track of the angles, wavelengths, and phases of the lights rays.
+			Furthermore, we would like to extend the effects of iridescence to more anisotropic BRDFs and other scenes we have implemented in previous projects.
+		</p>
+		<div class="row">
+		  <div class="column">
+		    <img src="Images/humming.jpg" alt="Iridescent Effects in Nature" style="width:80%; padding: 0%">
+				<p>Iridescent Effects on a Humming Bird</p>
+		  </div>
+		</div>
+
+		<h2>Technical Approach</h2>
+		<p>Since no one in our team picked the mirror and glass BSDFs when working on Project 3-2, we implemented that from scratch, before modifying it to implement iridescence. We first modified the mirror BSDF sample-f function to implement thin film interference by taking into account the film thickness, refractive index of the film, wavelengths of light (R, G, B), and the angle of incidence.</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/paper.jpg" alt="Thin Film Interference" style="width:60%; padding: 0%">
+				<p>How Light Waves Behave with Thin Film Interference</p>
+			</div>
+		</div>
+		<p>These were then used in combination with the Fresnel equations to calculate the reflectance and transmittance of the light ray at the interface between the thin film layer and the adjacent medium to determine the final color output.</p>
+		<p>We also modified the glass BSDF class to render soap bubble like effects using a similar approach. We were able to render the images as transparent but there wasn't an iridescent effect as we discovered that that would require rewriting a majority of the renderer code. Previous groups that worked on similar projects also commented on this.</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/bubbles.jpg" alt="Collada File Render Issue" style="width:60%; padding: 0%">
+				<p>Rendered Bubbles Missing Iridescent Effect</p>
+			</div>
+		</div>
+		<p>When modifying glass BSDF didn't give the right effect, we turned to modifying the .dae files. Many approaches were used, including Blender, AutoCAD, and online websites for modifying collada files. However, none of these options worked as the rendering program wasn't able to properly render the modified .dae file.</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/blackbox.jpg" alt="Collada File Render Issue" style="width:60%; padding: 0%">
+				<p>Collada File Render Issue</p>
+			</div>
+		</div>
+		<p>We asked staff what could be causing this issue and they said there could be multiple causes for it, possibly stemming from the fact that we were using a newer version of Blender that the renderer didn't support.</p>
+		<p>We then tried a different approach by rendering the soap bubbles in Blender itself. This required learning a new software but the results were very life-like. This was done by making a custom material for a sphere. The material was a mix of the Transparent and Glossy BSDFs, with some noise added in to vary the color of the film to simulate the variance of the thickness of the bubbles in real life.</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/blender.jpg" alt="Custom Blender Material" style="width:60%; padding: 0%">
+				<p>Custom Blender Material</p>
+			</div>
+		</div>
+		<p>Lessons learned, when something doesn't work, try and try again until you find a way that does.</p>
+		<h2>Results</h2>
+		<p>Below are some of results of our project, modeled after the iridescence sheen of oil:</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/spheres.jpg" alt="Spheres" style="width:60%; padding: 0%">
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<img src="Images/bunny.jpg" alt="Bunny" style="width:60%; padding: 0%">
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<img src="Images/dragon.jpg" alt="Dragon" style="width:60%; padding: 0%">
+			</div>
+		</div>
+		<p>Here is the render we made of soap bubbles made in Blender:</p>
+		<div class="row">
+			<div class="column">
+				<img src="Images/bubbles.gif" alt="Blender Render" style="width:80%; padding: 0%">
+				<p>Blender Render of Soap Bubbles</p>
+			</div>
+		</div>
+		<h2>References</h2>
+		<p>Chapter 8. simulating diffraction. NVIDIA Developer. (n.d.). Retrieved May 4, 2023, from https://developer.nvidia.com/gpugems/gpugems/part-i-natural-effects/chapter-8-simulating-diffraction</p>
+		<p>Beautypi. (n.d.). Shadertoy. https://www.shadertoy.com/view/llcXWM</p>
+		<p>The Art of Code. (2021, June 4). Live Coding:Bending Light [Video]. YouTube. https://www.youtube.com/watch?v=NCpaaLkmXI8</p>
+		<p>Zucconi, A. (2020). CD-ROM Shader: Diffraction Grating – Part 1. Alan Zucconi. https://www.alanzucconi.com/2017/07/15/cd-rom-shader-1/</p>
+		<p>Zucconi, A. (2020b). CD-ROM Shader: Diffraction Grating – Part 2. Alan Zucconi. https://www.alanzucconi.com/2017/07/15/cd-rom-shader-2</p>
+		<p>Thin Film Shader - OSL Shaders - Chaos Help. (n.d.). https://docs.chaos.com/display/OSLShaders/Thin+Film+Shader</p>
+		<p>CS 184/284A Final Project. (n.d.). https://kwsong.github.io/cs184_final/final.html</p>
+		<p>CS184 Project Proposal. (n.d.). https://dangeng.github.io/184-final-project/proposal.html</p>
+		<h2>Contributions</h2>
+		<p>Alana Li: Contributed to code, final presentation, final report</p>
+		<p>Jianzhong He: Contributed to project proposal, code, final presentation</p>
+		<p>Jie Chen: Contributed to code, milestone presentation</p>
+		<p>Beatriz Muniz de Castro e Silva: Contributed to code, milestone report, final presentation</p>
+		<br></br>
+	</body>
+</html>
