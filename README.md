@@ -12,4 +12,6 @@ Project 3-2: https://alanali.github.io/CS184-Writeups/proj3-2/index.html
 
 Project 4: https://alanali.github.io/CS184-Writeups/proj4/index.html
 
-Final Project: https://alanali.github.io/CS184-Writeups/projfinal/index.html
+Final Project Proposal: https://alanali.github.io/CS184-Writeups/projfinalproposal/index.html
+
+Final Project Report: https://alanali.github.io/CS184-Writeups/projfinalreport/index.html
