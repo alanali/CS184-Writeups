@@ -14,9 +14,7 @@
 		<br>
 		<h3><a href="https://youtu.be/NeIZHXoAeEM">Project Video</a></h3>
 		<h2>Abstract</h2>
-		<p>
-			In this project, we implemented the effects of iridescence due to the wave nature of light. When light rays get reflected from the surface, they tend to interfere with each other because of different wavelengths, exhibiting many colorful patterns on the surface. We are going to approximate this real-life situation by keeping track of the angles, wavelengths, and phases of the lights rays.
-		</p>
+		<p>In this project, we implemented iridescence, which is a result of the wave nature of light. When light rays hit a surface, they can interfere with each other, creating colorful patterns that change as the angle of incidence or viewing angle changes. To simulate this effect, we approximated the interaction of light rays with the surface by considering the angles of incidence and reflection, the wavelengths of the light, and the phases of the waves. Specifically, we used the thin-film interference model to simulate the behavior of light interacting with a thin layer of material, such as oil on water or a soap bubble. By modeling the physical properties of these thin films, we were able to generate visually realistic images that exhibit the colorful and dynamic patterns of iridescence.</p>
 		<div class="row">
 		  <div class="column">
 		    <img src="Images/humming.jpg" alt="Iridescent Effects in Nature" style="width:30%; padding: 0%">
@@ -32,7 +30,7 @@
 				<p>How Light Waves Behave with Thin Film Interference</p>
 			</div>
 		</div>
-		<p>These were then used in combination with the Fresnel equations to calculate the reflectance and transmittance of the light ray at the interface between the thin film layer and the adjacent medium to determine the final color output.</p>
+		<p>The project takes into account thin film interference by calculating the phase shift caused by the reflection and transmission of light at the interface between the glass and air layers. The thickness of the thin film layer and the refractive index of the glass material are used to compute the phase shift. The code also computes the Fresnel coefficients, which describe the reflection and transmission of light at the glass-air interface, and uses them to calculate the reflectance and transmittance of the glass material. Finally, the code samples a new direction for the scattered light and returns the BSDF value for that direction.</p>
 		<p>We also modified the glass BSDF class to render soap bubble like effects using a similar approach. We were able to render the images as transparent but there wasn't an iridescent effect as we discovered that that would require rewriting a majority of the renderer code. Previous groups that worked on similar projects also commented on this.</p>
 		<div class="row">
 			<div class="column">
